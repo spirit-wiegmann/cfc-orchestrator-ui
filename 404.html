@@ -5,25 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CFC Orchestrator UI</title>
   <script>
-    // GitHub Pages SPA 404 Redirect
-    // Wenn die aktuelle URL nicht auf der Root-Domain endet,
-    // leiten wir zur Root-Domain um und speichern den ursprünglichen Pfad
-    const pathSegmentsToKeep = 1; // Für repos auf der Form username.github.io/repo-name
+    // GitHub Pages SPA 404 Redirect - Angepasst für callback URLs
+    const segmentCount = 0; // Die Anzahl der Segmente in der URL, die zum Repository-Namen gehören
+    const repo = "/cfc-orchestrator-ui"; // Der Name des Repositories
     
     const l = window.location;
-    // Erhalte den aktuellen Pfad ohne den /cfc-orchestrator-ui Präfix
-    const currentPath = l.pathname.substr(pathSegmentsToKeep);
+    // Entferne den Basis-Pfad vom aktuellen Pfad
+    const path = l.pathname.substring(repo.length);
     
-    if (l.search) {
-      // Wenn wir Query-Parameter haben, füge sie dem Pfad hinzu
-      sessionStorage.redirect = currentPath + l.search;
-    } else {
-      // Sonst speichere nur den Pfad
-      sessionStorage.redirect = currentPath;
-    }
+    // Speichere den Pfad mit Query-Parametern
+    sessionStorage.redirect = path + l.search + l.hash;
     
-    // Leite zur Basis-URL des Repositorys um
-    l.href = l.origin + '/cfc-orchestrator-ui';
+    // Umleitung zur Hauptseite
+    l.href = l.origin + repo + "/index.html";
   </script>
 </head>
 <body>

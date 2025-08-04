@@ -2,15 +2,28 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="CFC Orchestrator UI - MonoRepo Orchestrierung mit React und Material UI" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <title>CFC Orchestrator UI</title>
-    <script src="/cfc-orchestrator-ui/redirect.js"></script>
-    <script type="module" crossorigin src="/cfc-orchestrator-ui/assets/index-C-dpVsU2.js"></script>
+    <script>
+      // Redirect-Script für GitHub Pages SPA
+      (function() {
+        // Hole die Weiterleitungsinformationen aus dem SessionStorage
+        const redirect = sessionStorage.redirect;
+        // Entferne die Weiterleitungsinformationen
+        delete sessionStorage.redirect;
+        
+        // Wenn ein Redirect existiert, ersetze die aktuelle Seite durch die ursprüngliche Anfrage
+        if (redirect && redirect !== location.pathname) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/cfc-orchestrator-ui/assets/index-0G63Okc3.js"></script>
   </head>
   <body>
     <noscript>Sie müssen JavaScript aktivieren, um diese App auszuführen.</noscript>
