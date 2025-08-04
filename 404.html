@@ -5,29 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CFC Orchestrator UI</title>
   <script>
-    // GitHub Pages SPA 404 Redirect - Angepasst für callback URLs
-    const repoName = "cfc-orchestrator-ui";
-    const repo = "/" + repoName; // Der Name des Repositories mit führendem Slash
-    
-    const l = window.location;
-    const fullPath = l.pathname;
-    
-    // Prüfe, ob der Pfad den Repo-Namen doppelt enthält (was auf einen Fehler hinweist)
-    const doubleRepoPattern = new RegExp("^" + repo + repo);
-    if (doubleRepoPattern.test(fullPath)) {
-      // Bei einem doppelten Pfad entfernen wir den ersten Repository-Teil
-      const correctedPath = fullPath.replace(repo, "");
-      sessionStorage.redirect = correctedPath + l.search + l.hash;
-    } else {
-      // Normaler Fall: Wir extrahieren den Pfad nach dem Repository-Namen
-      const path = fullPath.replace(new RegExp("^" + repo), "");
-      sessionStorage.redirect = path + l.search + l.hash;
-    }
-    
-    // Umleitung zur Hauptseite
-    l.href = l.origin + repo;
-  </script>
-</head>
+    // Einfache Weiterleitung zur index.html für clientseitiges Routing mit eigener Domain
+    sessionStorage.redirect = window.location.pathname + window.location.search + window.location.hash;
+    window.location.href = "/";
   </script>
 </head>
 <body>
